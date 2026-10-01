@@ -1,0 +1,10 @@
+.vs/
+bin/
+obj/
+TestResults/
+*.user
+*.suo
+*.userosscache
+*.rsuser
+.idea/
+.vscode/

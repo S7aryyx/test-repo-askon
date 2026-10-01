@@ -1,0 +1,21 @@
+<Window x:Class="MiniPdm.Wpf.ImportReportWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Отчёт импорта" Height="620" Width="900">
+    <Grid Margin="12">
+        <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="*"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+            <TextBlock Text="Принято: " FontWeight="Bold"/><TextBlock Text="{Binding AcceptedCount}" Margin="4,0,18,0"/>
+            <TextBlock Text="Отклонено: " FontWeight="Bold"/><TextBlock Text="{Binding RejectedCount}" Margin="4,0,18,0"/>
+            <TextBlock Text="Предупреждений: " FontWeight="Bold"/><TextBlock Text="{Binding WarningCount}" Margin="4,0,0,0"/>
+        </StackPanel>
+        <DataGrid Grid.Row="1" ItemsSource="{Binding Items}" AutoGenerateColumns="False" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Файл" Binding="{Binding FileName}" Width="*"/>
+                <DataGridTextColumn Header="Результат" Binding="{Binding Severity}" Width="120"/>
+                <DataGridTextColumn Header="Причина" Binding="{Binding Reason}" Width="2*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Grid.Row="2" Content="Закрыть" Width="100" HorizontalAlignment="Right" Margin="0,10,0,0" Command="{Binding CloseCommand}"/>
+    </Grid>
+</Window>
